@@ -60,6 +60,7 @@
     .logo-wrap img {
       height: 48px;
       object-fit: contain;
+      mix-blend-mode: multiply;
     }
 
     nav {
@@ -147,6 +148,7 @@
     .hero-logo img {
       height: 56px;
       object-fit: contain;
+      mix-blend-mode: multiply;
     }
 
     /* ── DIVIDER ── */
@@ -232,8 +234,8 @@
       overflow: hidden;
       cursor: pointer;
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.6s, transform 0.6s, box-shadow 0.4s, border-color 0.4s;
+      transform: translateY(36px);
+      transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s, border-color 0.4s;
     }
 
     .card.visible {
@@ -359,6 +361,7 @@
       opacity: 0.85;
       margin-bottom: 1.2rem;
       filter: brightness(1.3) contrast(0.9);
+      mix-blend-mode: screen;
     }
 
     footer p {
@@ -393,34 +396,34 @@
     @keyframes petalFloat {
       0% {
         transform: translateY(0) rotate(0deg) translateX(0);
-        opacity: 0.7;
+        opacity: 0.45;
       }
 
       50% {
-        transform: translateY(-18px) rotate(12deg) translateX(8px);
-        opacity: 1;
+        transform: translateY(-22px) rotate(14deg) translateX(10px);
+        opacity: 0.75;
       }
 
       100% {
         transform: translateY(0) rotate(-6deg) translateX(-4px);
-        opacity: 0.7;
+        opacity: 0.45;
       }
     }
 
     @keyframes petalDrift {
       0% {
         transform: translateY(0) rotate(5deg);
-        opacity: 0.5;
+        opacity: 0.35;
       }
 
       60% {
-        transform: translateY(-14px) rotate(-8deg) translateX(6px);
-        opacity: 0.9;
+        transform: translateY(-18px) rotate(-10deg) translateX(8px);
+        opacity: 0.65;
       }
 
       100% {
         transform: translateY(0) rotate(5deg);
-        opacity: 0.5;
+        opacity: 0.35;
       }
     }
 
@@ -440,14 +443,17 @@
       0%,
       100% {
         transform: scale(1);
+        opacity: 0.3;
       }
 
       30% {
-        transform: scale(1.18);
+        transform: scale(1.22);
+        opacity: 0.55;
       }
 
       60% {
-        transform: scale(0.95);
+        transform: scale(0.93);
+        opacity: 0.4;
       }
     }
 
@@ -461,22 +467,22 @@
       }
     }
 
-    /* Brillo partícula — todos */
+    /* Brillo partícula */
     @keyframes sparkle {
 
       0%,
       100% {
         opacity: 0;
-        transform: scale(0.5) rotate(0deg);
+        transform: scale(0.4) rotate(0deg);
       }
 
       50% {
-        opacity: 1;
-        transform: scale(1.2) rotate(180deg);
+        opacity: 0.85;
+        transform: scale(1.3) rotate(180deg);
       }
     }
 
-    /* Línea dorada animada en section-tag */
+    /* Línea dorada */
     @keyframes lineExpand {
       from {
         width: 0;
@@ -537,19 +543,19 @@
 
     .section-xv .petal {
       position: absolute;
-      font-size: 1rem;
-      animation: petalFloat 4s ease-in-out infinite;
+      font-size: 1.3rem;
+      animation: petalFloat 5s ease-in-out infinite;
       opacity: 0.55;
     }
 
     .section-xv .petal:nth-child(2) {
-      animation: petalDrift 5s ease-in-out 1s infinite;
-      font-size: 0.8rem;
+      animation: petalDrift 6s ease-in-out 1.2s infinite;
+      font-size: 1rem;
     }
 
     .section-xv .petal:nth-child(3) {
-      animation: petalFloat 6s ease-in-out 2s infinite;
-      font-size: 1.2rem;
+      animation: petalFloat 7s ease-in-out 2.5s infinite;
+      font-size: 1.5rem;
     }
 
     .section-xv .card:hover {
@@ -601,19 +607,21 @@
       position: absolute;
       right: 6%;
       top: 2.5rem;
-      font-size: 1.3rem;
-      animation: heartbeat 2.5s ease-in-out infinite;
-      opacity: 0.35;
+      font-size: 1.8rem;
+      animation: heartbeat 3s ease-in-out infinite;
+      opacity: 0.4;
+      color: var(--gold);
     }
 
     /* Partículas sparkle en sección boda */
     .sparkle-dot {
       position: absolute;
-      width: 5px;
-      height: 5px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: var(--gold-light);
-      animation: sparkle 3s ease-in-out infinite;
+      background: var(--gold);
+      box-shadow: 0 0 6px 2px rgba(201, 169, 110, 0.5);
+      animation: sparkle 3.5s ease-in-out infinite;
     }
 
     /* ── section-header: línea decorativa bajo el tag ── */
@@ -683,131 +691,6 @@
     </div>
   </section>
 
-  <div class="gold-divider"><span>✦</span></div>
-
-  <!-- ───── SECCIÓN: XV CAMILA ───── -->
-  <section class="section section-xv" id="xv" style="position:relative;overflow:hidden;">
-    <span class="petal section-deco" style="top:2rem;left:4%;">🌸</span>
-    <span class="petal section-deco" style="top:3.5rem;right:7%;font-size:0.75rem;">✿</span>
-    <span class="petal section-deco" style="bottom:4rem;left:9%;font-size:0.9rem;">🌷</span>
-    <div class="section-header">
-      <span class="section-tag">XV Años</span>
-      <span class="deco-line"></span>
-      <h2>Camila — Sweet Fifteen</h2>
-    </div>
-    <div class="cards-grid">
-      <div class="card">
-        <div class="card-img-wrap">
-          <img src="cami1.jpg" alt="Camila XV - 1">
-          <div class="card-overlay">
-            <a href="https://15camila.creativeartvideo.com/camila15" target="_blank">Ver Invitación</a>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3>Modelo Camila</h3>
-          <p>Elegancia floral · XV Años</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img-wrap">
-          <img src="cami2.jpg" alt="Camila XV - 2">
-          <div class="card-overlay">
-            <a href="https://15camila.creativeartvideo.com/camila15" target="_blank">Ver Invitación</a>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3>Modelo Camila</h3>
-          <p>Elegancia floral · XV Años</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img-wrap">
-          <img src="cami3.jpg" alt="Camila XV - 3">
-          <div class="card-overlay">
-            <a href="https://15camila.creativeartvideo.com/camila15" target="_blank">Ver Invitación</a>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3>Modelo Camila</h3>
-          <p>Elegancia floral · XV Años</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img-wrap">
-          <img src="cami4.jpg" alt="Camila XV - 4">
-          <div class="card-overlay">
-            <a href="https://15camila.creativeartvideo.com/camila15" target="_blank">Ver Invitación</a>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3>Modelo Camila</h3>
-          <p>Elegancia floral · XV Años</p>
-        </div>
-      </div>
-    </div>
-    <div class="section-cta">
-      <a href="https://15camila.creativeartvideo.com/camila15" class="btn-gold" target="_blank">Ver Invitación
-        Completa</a>
-    </div>
-  </section>
-
-  <div class="gold-divider"><span>✦</span></div>
-
-  <!-- ───── SECCIÓN: BODA CESAR & LEYDI ───── -->
-  <section class="section section-boda" id="bodas" style="position:relative;overflow:hidden;">
-    <span class="heart-deco">♡</span>
-    <span class="sparkle-dot" style="top:2rem;left:5%;animation-delay:0s;"></span>
-    <span class="sparkle-dot" style="top:4rem;left:12%;animation-delay:0.8s;width:4px;height:4px;"></span>
-    <span class="sparkle-dot" style="bottom:5rem;right:8%;animation-delay:1.5s;"></span>
-    <span class="sparkle-dot" style="top:3rem;right:15%;animation-delay:2.2s;width:3px;height:3px;"></span>
-    <div class="section-header">
-      <span class="section-tag">Bodas</span>
-      <span class="deco-line"></span>
-      <h2>César &amp; Leydi</h2>
-    </div>
-    <div class="cards-grid">
-      <div class="card">
-        <div class="card-img-wrap">
-          <img src="boda1.jpg" alt="Boda 1">
-          <div class="card-overlay">
-            <a href="https://wedding-cesar-leydi.creativeartvideo.com/" target="_blank">Ver Invitación</a>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3>Modelo Amor Eterno</h3>
-          <p>Romance y sofisticación</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img-wrap">
-          <img src="boda2.jpg" alt="Boda 2">
-          <div class="card-overlay">
-            <a href="https://wedding-cesar-leydi.creativeartvideo.com/" target="_blank">Ver Invitación</a>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3>Modelo Amor Eterno</h3>
-          <p>Romance y sofisticación</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img-wrap">
-          <img src="boda3.jpg" alt="Boda 3">
-          <div class="card-overlay">
-            <a href="https://wedding-cesar-leydi.creativeartvideo.com/" target="_blank">Ver Invitación</a>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3>Modelo Amor Eterno</h3>
-          <p>Romance y sofisticación</p>
-        </div>
-      </div>
-    </div>
-    <div class="section-cta">
-      <a href="https://wedding-cesar-leydi.creativeartvideo.com/" class="btn-gold" target="_blank">Ver Invitación
-        Completa</a>
-    </div>
-  </section>
 
   <div class="gold-divider"><span>✦</span></div>
 
@@ -860,75 +743,6 @@
     </div>
     <div class="section-cta">
       <a href="https://15-maya.invitaciones4you.com" class="btn-gold" target="_blank">Ver Invitación Completa</a>
-    </div>
-  </section>
-
-  <div class="gold-divider"><span>✦</span></div>
-
-  <!-- ───── SECCIÓN: LAURA & SANTOS ───── -->
-  <section class="section section-boda" id="eventos" style="position:relative;overflow:hidden;">
-    <span class="heart-deco" style="right:auto;left:5%;top:2rem;">♡</span>
-    <span class="sparkle-dot" style="top:3rem;right:6%;animation-delay:0.4s;"></span>
-    <span class="sparkle-dot" style="bottom:4rem;left:10%;animation-delay:1.2s;width:4px;height:4px;"></span>
-    <span class="sparkle-dot" style="top:5rem;right:20%;animation-delay:2s;width:3px;height:3px;"></span>
-    <div class="section-header">
-      <span class="section-tag">Bodas</span>
-      <span class="deco-line"></span>
-      <h2>Laura &amp; Santos</h2>
-    </div>
-    <div class="cards-grid">
-      <div class="card">
-        <div class="card-img-wrap">
-          <img src="santos1.jpg" alt="Santos 1">
-          <div class="card-overlay">
-            <a href="https://laura-y-santos.creativeartvideo.com/" target="_blank">Ver Invitación</a>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3>Modelo Santos</h3>
-          <p>Elegancia clásica · Boda</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img-wrap">
-          <img src="santos2.jpg" alt="Santos 2">
-          <div class="card-overlay">
-            <a href="https://laura-y-santos.creativeartvideo.com/" target="_blank">Ver Invitación</a>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3>Modelo Santos</h3>
-          <p>Elegancia clásica · Boda</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img-wrap">
-          <img src="santos3.jpg" alt="Santos 3">
-          <div class="card-overlay">
-            <a href="https://laura-y-santos.creativeartvideo.com/" target="_blank">Ver Invitación</a>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3>Modelo Santos</h3>
-          <p>Elegancia clásica · Boda</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img-wrap">
-          <img src="santos4.jpg" alt="Santos 4">
-          <div class="card-overlay">
-            <a href="https://laura-y-santos.creativeartvideo.com/" target="_blank">Ver Invitación</a>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3>Modelo Santos</h3>
-          <p>Elegancia clásica · Boda</p>
-        </div>
-      </div>
-    </div>
-    <div class="section-cta">
-      <a href="https://laura-y-santos.creativeartvideo.com/" class="btn-gold" target="_blank">Ver Invitación
-        Completa</a>
     </div>
   </section>
 
@@ -1090,6 +904,202 @@
     </div>
   </section>
 
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- ───── SECCIÓN: LAURA & SANTOS ───── -->
+  <section class="section section-boda" id="eventos" style="position:relative;overflow:hidden;">
+    <span class="heart-deco" style="right:auto;left:5%;top:2rem;">♡</span>
+    <span class="sparkle-dot" style="top:3rem;right:6%;animation-delay:0.4s;"></span>
+    <span class="sparkle-dot" style="bottom:4rem;left:10%;animation-delay:1.2s;width:4px;height:4px;"></span>
+    <span class="sparkle-dot" style="top:5rem;right:20%;animation-delay:2s;width:3px;height:3px;"></span>
+    <div class="section-header">
+      <span class="section-tag">Bodas</span>
+      <span class="deco-line"></span>
+      <h2>Laura &amp; Santos</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="santos1.jpg" alt="Santos 1">
+          <div class="card-overlay">
+            <a href="https://laura-y-santos.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Santos</h3>
+          <p>Elegancia clásica · Boda</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="santos2.jpg" alt="Santos 2">
+          <div class="card-overlay">
+            <a href="https://laura-y-santos.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Santos</h3>
+          <p>Elegancia clásica · Boda</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="santos3.jpg" alt="Santos 3">
+          <div class="card-overlay">
+            <a href="https://laura-y-santos.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Santos</h3>
+          <p>Elegancia clásica · Boda</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="santos4.jpg" alt="Santos 4">
+          <div class="card-overlay">
+            <a href="https://laura-y-santos.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Santos</h3>
+          <p>Elegancia clásica · Boda</p>
+        </div>
+      </div>
+    </div>
+    <div class="section-cta">
+      <a href="https://laura-y-santos.creativeartvideo.com/" class="btn-gold" target="_blank">Ver Invitación
+        Completa</a>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- ───── SECCIÓN: BODA CESAR & LEYDI ───── -->
+  <section class="section section-boda" id="bodas" style="position:relative;overflow:hidden;">
+    <span class="heart-deco">♡</span>
+    <span class="sparkle-dot" style="top:2rem;left:5%;animation-delay:0s;"></span>
+    <span class="sparkle-dot" style="top:4rem;left:12%;animation-delay:0.8s;width:4px;height:4px;"></span>
+    <span class="sparkle-dot" style="bottom:5rem;right:8%;animation-delay:1.5s;"></span>
+    <span class="sparkle-dot" style="top:3rem;right:15%;animation-delay:2.2s;width:3px;height:3px;"></span>
+    <div class="section-header">
+      <span class="section-tag">Bodas</span>
+      <span class="deco-line"></span>
+      <h2>César &amp; Leydi</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="boda1.jpg" alt="Boda 1">
+          <div class="card-overlay">
+            <a href="https://wedding-cesar-leydi.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Amor Eterno</h3>
+          <p>Romance y sofisticación</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="boda2.jpg" alt="Boda 2">
+          <div class="card-overlay">
+            <a href="https://wedding-cesar-leydi.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Amor Eterno</h3>
+          <p>Romance y sofisticación</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="boda3.jpg" alt="Boda 3">
+          <div class="card-overlay">
+            <a href="https://wedding-cesar-leydi.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Amor Eterno</h3>
+          <p>Romance y sofisticación</p>
+        </div>
+      </div>
+    </div>
+    <div class="section-cta">
+      <a href="https://wedding-cesar-leydi.creativeartvideo.com/" class="btn-gold" target="_blank">Ver Invitación
+        Completa</a>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- ───── SECCIÓN: XV CAMILA ───── -->
+  <section class="section section-xv" id="xv" style="position:relative;overflow:hidden;">
+    <span class="petal section-deco" style="top:2rem;left:4%;">🌸</span>
+    <span class="petal section-deco" style="top:3.5rem;right:7%;font-size:0.75rem;">✿</span>
+    <span class="petal section-deco" style="bottom:4rem;left:9%;font-size:0.9rem;">🌷</span>
+    <div class="section-header">
+      <span class="section-tag">XV Años</span>
+      <span class="deco-line"></span>
+      <h2>Camila — Sweet Fifteen</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="cami1.jpg" alt="Camila XV - 1">
+          <div class="card-overlay">
+            <a href="https://15camila.creativeartvideo.com/camila15" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Camila</h3>
+          <p>Elegancia floral · XV Años</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="cami2.jpg" alt="Camila XV - 2">
+          <div class="card-overlay">
+            <a href="https://15camila.creativeartvideo.com/camila15" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Camila</h3>
+          <p>Elegancia floral · XV Años</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="cami3.jpg" alt="Camila XV - 3">
+          <div class="card-overlay">
+            <a href="https://15camila.creativeartvideo.com/camila15" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Camila</h3>
+          <p>Elegancia floral · XV Años</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="cami4.jpg" alt="Camila XV - 4">
+          <div class="card-overlay">
+            <a href="https://15camila.creativeartvideo.com/camila15" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Camila</h3>
+          <p>Elegancia floral · XV Años</p>
+        </div>
+      </div>
+    </div>
+    <div class="section-cta">
+      <a href="https://15camila.creativeartvideo.com/camila15" class="btn-gold" target="_blank">Ver Invitación
+        Completa</a>
+    </div>
+  </section>
+
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">
@@ -1101,48 +1111,40 @@
   </footer>
 
   <script>
-    // Intersection Observer para animar al hacer scroll
-    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observerOptions = { threshold: 0.08, rootMargin: '0px 0px -40px 0px' };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, observerOptions);
 
-    // Observar headers de sección
     document.querySelectorAll('.section-header').forEach(el => observer.observe(el));
 
-    // Observar cards con delay escalonado + dirección alterna por sección
-    document.querySelectorAll('.cards-grid').forEach((grid, gridIndex) => {
+    document.querySelectorAll('.cards-grid').forEach((grid) => {
       const cards = grid.querySelectorAll('.card');
       const isXV   = grid.closest('.section-xv');
       const isBoda = grid.closest('.section-boda');
 
-      // Asignar animación inicial por tipo
       cards.forEach((card, i) => {
         if (isXV) {
-          // XV: entrada desde abajo con leve rotación
-          card.style.transform = 'translateY(45px) rotate(-1deg)';
-          card.style.transition = `opacity 0.65s, transform 0.65s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s, border-color 0.4s`;
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(50px) rotate(-1.5deg)';
+          card.style.transition = `opacity 0.8s ease ${i * 0.12}s, transform 0.8s cubic-bezier(0.22,1,0.36,1) ${i * 0.12}s, box-shadow 0.4s, border-color 0.4s`;
         } else if (isBoda) {
-          // Bodas: alternando izq / der
-          const dir = i % 2 === 0 ? '-35px' : '35px';
-          card.style.transform = `translateX(${dir})`;
-          card.style.transition = `opacity 0.7s, transform 0.7s ease, box-shadow 0.4s, border-color 0.4s`;
+          const dir = i % 2 === 0 ? '-45px' : '45px';
+          card.style.opacity = '0';
+          card.style.transform = `translateX(${dir}) scale(0.97)`;
+          card.style.transition = `opacity 0.85s ease ${i * 0.13}s, transform 0.85s cubic-bezier(0.22,1,0.36,1) ${i * 0.13}s, box-shadow 0.4s, border-color 0.4s`;
         }
       });
 
       const gridObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            cards.forEach((card, i) => {
-              setTimeout(() => {
-                card.style.transform = '';
-                card.classList.add('visible');
-              }, i * 110);
+            cards.forEach((card) => {
+              card.style.opacity  = '1';
+              card.style.transform = 'translateY(0) rotate(0deg) translateX(0) scale(1)';
             });
             gridObserver.unobserve(entry.target);
           }
@@ -1151,14 +1153,11 @@
       gridObserver.observe(grid);
     });
 
-    // Animación sutil de pétalos: posición levemente aleatoria al cargar
     document.querySelectorAll('.petal').forEach((p, i) => {
-      p.style.animationDelay = (i * 0.7) + 's';
+      p.style.animationDelay = (i * 0.9) + 's';
     });
-
-    // Sparkles con delays variados (ya definidos inline, solo asegurar visibilidad)
     document.querySelectorAll('.sparkle-dot').forEach((s, i) => {
-      s.style.animationDelay = (i * 0.6) + 's';
+      s.style.animationDelay = (i * 0.7) + 's';
     });
   </script>
 </body>
