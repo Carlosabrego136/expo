@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitaciones4You — Galería de Plantillas</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A96E;
+      --gold-light: #E8D5A3;
+      --gold-dark: #A07840;
+      --white: #FAFAF8;
+      --dark: #1a1a1a;
+      --gray: #888;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--white);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ── FONDO ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('fondo.jpg') center/cover no-repeat;
+      opacity: 0.08;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 250, 248, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.25);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo-wrap img {
+      height: 48px;
+      object-fit: contain;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dark);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 100px 5% 80px;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s forwards;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      letter-spacing: 0.05em;
+      max-width: 480px;
+      margin: 0 auto;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s forwards;
+    }
+
+    .hero-logo {
+      margin-top: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s forwards;
+    }
+
+    .hero-logo img {
+      height: 56px;
+      object-fit: contain;
+    }
+
+    /* ── DIVIDER ── */
+    .gold-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem 5%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .gold-divider::before,
+    .gold-divider::after {
+      content: '';
+      flex: 1;
+      max-width: 200px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+
+    .gold-divider::after {
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .gold-divider span {
+      font-size: 1.1rem;
+      color: var(--gold);
+    }
+
+    /* ── SECTION ── */
+    .section {
+      position: relative;
+      z-index: 1;
+      padding: 60px 5% 80px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s, transform 0.7s;
+    }
+
+    .section-header.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201, 169, 110, 0.4);
+      padding: 4px 14px;
+      margin-bottom: 1rem;
+    }
+
+    .section-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── CARD GRID ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      position: relative;
+      border: 1px solid rgba(201, 169, 110, 0.2);
+      background: rgba(250, 250, 248, 0.9);
+      overflow: hidden;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s, transform 0.6s, box-shadow 0.4s, border-color 0.4s;
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card:hover {
+      box-shadow: 0 20px 60px rgba(201, 169, 110, 0.18);
+      border-color: rgba(201, 169, 110, 0.6);
+    }
+
+    .card-img-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+    }
+
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .card:hover .card-img-wrap img {
+      transform: scale(1.06);
+    }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 10, 10, 0.7) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 2rem;
+    }
+
+    .card:hover .card-overlay {
+      opacity: 1;
+    }
+
+    .card-overlay a {
+      display: inline-block;
+      padding: 10px 26px;
+      background: transparent;
+      border: 1px solid var(--gold-light);
+      color: var(--gold-light);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .card-overlay a:hover {
+      background: var(--gold);
+      color: #fff;
+      border-color: var(--gold);
+    }
+
+    .card-body {
+      padding: 1.1rem 1.2rem 1.4rem;
+      border-top: 1px solid rgba(201, 169, 110, 0.15);
+    }
+
+    .card-body h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-body p {
+      font-size: 0.72rem;
+      color: var(--gray);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── CTA BUTTON (main) ── */
+    .section-cta {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      padding: 13px 40px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: transparent;
+      transition: background 0.35s, color 0.35s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-gold:hover {
+      background: var(--gold);
+      color: #fff;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: #111;
+      color: #aaa;
+      padding: 50px 5% 30px;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .footer-logo img {
+      height: 44px;
+      object-fit: contain;
+      opacity: 0.85;
+      margin-bottom: 1.2rem;
+      filter: brightness(1.3) contrast(0.9);
+    }
+
+    footer p {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: #666;
+      margin-top: 1rem;
+    }
+
+    .footer-line {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1rem auto;
+      opacity: 0.5;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo-wrap">
+      <img src="logo.jpg" alt="Invitaciones4You">
+    </div>
+    <nav>
+      <a href="#xv">XV Años</a>
+      <a href="#bodas">Bodas</a>
+      <a href="#eventos">Eventos</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">Diseños exclusivos para momentos únicos</p>
+    <h1>Invitaciones<br><em>que enamoran</em></h1>
+    <p>Explora nuestra galería de plantillas digitales — elegantes, personalizadas y listas para compartir.</p>
+    <div class="hero-logo">
+      <img src="logo.jpg" alt="Logo">
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- ───── SECCIÓN: XV CAMILA ───── -->
+  <section class="section" id="xv">
+    <div class="section-header">
+      <span class="section-tag">XV Años</span>
+      <h2>Camila — Sweet Fifteen</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="cami1.jpg" alt="Camila XV - 1">
+          <div class="card-overlay">
+            <a href="https://15camila.creativeartvideo.com/camila15" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Camila</h3>
+          <p>Elegancia floral · XV Años</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="cami2.jpg" alt="Camila XV - 2">
+          <div class="card-overlay">
+            <a href="https://15camila.creativeartvideo.com/camila15" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Camila</h3>
+          <p>Elegancia floral · XV Años</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="cami3.jpg" alt="Camila XV - 3">
+          <div class="card-overlay">
+            <a href="https://15camila.creativeartvideo.com/camila15" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Camila</h3>
+          <p>Elegancia floral · XV Años</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="cami4.jpg" alt="Camila XV - 4">
+          <div class="card-overlay">
+            <a href="https://15camila.creativeartvideo.com/camila15" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Camila</h3>
+          <p>Elegancia floral · XV Años</p>
+        </div>
+      </div>
+    </div>
+    <div class="section-cta">
+      <a href="https://15camila.creativeartvideo.com/camila15" class="btn-gold" target="_blank">Ver Invitación
+        Completa</a>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- ───── SECCIÓN: BODA CESAR & LEYDI ───── -->
+  <section class="section" id="bodas">
+    <div class="section-header">
+      <span class="section-tag">Bodas</span>
+      <h2>César &amp; Leydi</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="boda1.jpg" alt="Boda 1">
+          <div class="card-overlay">
+            <a href="https://wedding-cesar-leydi.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Amor Eterno</h3>
+          <p>Romance y sofisticación</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="boda2.jpg" alt="Boda 2">
+          <div class="card-overlay">
+            <a href="https://wedding-cesar-leydi.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Amor Eterno</h3>
+          <p>Romance y sofisticación</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="boda3.jpg" alt="Boda 3">
+          <div class="card-overlay">
+            <a href="https://wedding-cesar-leydi.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Amor Eterno</h3>
+          <p>Romance y sofisticación</p>
+        </div>
+      </div>
+    </div>
+    <div class="section-cta">
+      <a href="https://wedding-cesar-leydi.creativeartvideo.com/" class="btn-gold" target="_blank">Ver Invitación
+        Completa</a>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- ───── SECCIÓN: XV MAYA ───── -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-tag">XV Años</span>
+      <h2>Maya — Quinceañera</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="maya1.jpg" alt="Maya XV - 1">
+          <div class="card-overlay">
+            <a href="https://15-maya.invitaciones4you.com" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Maya</h3>
+          <p>Luminosa · XV Años</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="maya2.jpg" alt="Maya XV - 2">
+          <div class="card-overlay">
+            <a href="https://15-maya.invitaciones4you.com" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Maya</h3>
+          <p>Luminosa · XV Años</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="maya3.jpg" alt="Maya XV - 3">
+          <div class="card-overlay">
+            <a href="https://15-maya.invitaciones4you.com" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Maya</h3>
+          <p>Luminosa · XV Años</p>
+        </div>
+      </div>
+    </div>
+    <div class="section-cta">
+      <a href="https://15-maya.invitaciones4you.com" class="btn-gold" target="_blank">Ver Invitación Completa</a>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- ───── SECCIÓN: LAURA & SANTOS ───── -->
+  <section class="section" id="eventos">
+    <div class="section-header">
+      <span class="section-tag">Bodas</span>
+      <h2>Laura &amp; Santos</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="santos1.jpg" alt="Santos 1">
+          <div class="card-overlay">
+            <a href="https://laura-y-santos.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Santos</h3>
+          <p>Elegancia clásica · Boda</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="santos2.jpg" alt="Santos 2">
+          <div class="card-overlay">
+            <a href="https://laura-y-santos.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Santos</h3>
+          <p>Elegancia clásica · Boda</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="santos3.jpg" alt="Santos 3">
+          <div class="card-overlay">
+            <a href="https://laura-y-santos.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Santos</h3>
+          <p>Elegancia clásica · Boda</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="santos4.jpg" alt="Santos 4">
+          <div class="card-overlay">
+            <a href="https://laura-y-santos.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Santos</h3>
+          <p>Elegancia clásica · Boda</p>
+        </div>
+      </div>
+    </div>
+    <div class="section-cta">
+      <a href="https://laura-y-santos.creativeartvideo.com/" class="btn-gold" target="_blank">Ver Invitación
+        Completa</a>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- ───── SECCIÓN: MIKE & KANISHA ───── -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-tag">Bodas</span>
+      <h2>Mike &amp; Kanisha</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="mike1.jpg" alt="Mike 1">
+          <div class="card-overlay">
+            <a href="https://mikeykanisha.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Kanisha</h3>
+          <p>Moderno · Boda</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="mike2.jpg" alt="Mike 2">
+          <div class="card-overlay">
+            <a href="https://mikeykanisha.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Kanisha</h3>
+          <p>Moderno · Boda</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="mike3.jpg" alt="Mike 3">
+          <div class="card-overlay">
+            <a href="https://mikeykanisha.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Kanisha</h3>
+          <p>Moderno · Boda</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="mike4.jpg" alt="Mike 4">
+          <div class="card-overlay">
+            <a href="https://mikeykanisha.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Kanisha</h3>
+          <p>Moderno · Boda</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="mike5.jpg" alt="Mike 5">
+          <div class="card-overlay">
+            <a href="https://mikeykanisha.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Kanisha</h3>
+          <p>Moderno · Boda</p>
+        </div>
+      </div>
+    </div>
+    <div class="section-cta">
+      <a href="https://mikeykanisha.creativeartvideo.com/" class="btn-gold" target="_blank">Ver Invitación Completa</a>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- ───── SECCIÓN: XV KIM ───── -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-tag">XV Años</span>
+      <h2>Kim — Quinceañera</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="kim1.jpg" alt="Kim XV - 1">
+          <div class="card-overlay">
+            <a href="https://xvkim.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Kim</h3>
+          <p>Vibrante · XV Años</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="kim2.jpg" alt="Kim XV - 2">
+          <div class="card-overlay">
+            <a href="https://xvkim.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Kim</h3>
+          <p>Vibrante · XV Años</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="kim3.jpg" alt="Kim XV - 3">
+          <div class="card-overlay">
+            <a href="https://xvkim.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Kim</h3>
+          <p>Vibrante · XV Años</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="kim4.jpg" alt="Kim XV - 4">
+          <div class="card-overlay">
+            <a href="https://xvkim.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Kim</h3>
+          <p>Vibrante · XV Años</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="kim5.jpg" alt="Kim XV - 5">
+          <div class="card-overlay">
+            <a href="https://xvkim.creativeartvideo.com/" target="_blank">Ver Invitación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Modelo Kim</h3>
+          <p>Vibrante · XV Años</p>
+        </div>
+      </div>
+    </div>
+    <div class="section-cta">
+      <a href="https://xvkim.creativeartvideo.com/" class="btn-gold" target="_blank">Ver Invitación Completa</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <img src="logo.jpg" alt="Invitaciones4You">
+    </div>
+    <div class="footer-line"></div>
+    <p>Diseños exclusivos de invitaciones digitales · Bodas · XV Años · Eventos</p>
+    <p style="margin-top:0.5rem;">© 2024 Invitaciones4You. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // Intersection Observer para animar al hacer scroll
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+// Observar headers de sección
+document.querySelectorAll('.section-header').forEach(el => observer.observe(el));
+
+// Observar cards con delay escalonado
+document.querySelectorAll('.cards-grid').forEach(grid => {
+  const cards = grid.querySelectorAll('.card');
+  const gridObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        cards.forEach((card, i) => {
+          setTimeout(() => card.classList.add('visible'), i * 100);
+        });
+        gridObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  gridObserver.observe(grid);
+});
+  </script>
+</body>
+
+</html>
