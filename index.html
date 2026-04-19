@@ -389,6 +389,256 @@
       }
     }
 
+    /* Pétalos flotantes — XV años */
+    @keyframes petalFloat {
+      0% {
+        transform: translateY(0) rotate(0deg) translateX(0);
+        opacity: 0.7;
+      }
+
+      50% {
+        transform: translateY(-18px) rotate(12deg) translateX(8px);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(0) rotate(-6deg) translateX(-4px);
+        opacity: 0.7;
+      }
+    }
+
+    @keyframes petalDrift {
+      0% {
+        transform: translateY(0) rotate(5deg);
+        opacity: 0.5;
+      }
+
+      60% {
+        transform: translateY(-14px) rotate(-8deg) translateX(6px);
+        opacity: 0.9;
+      }
+
+      100% {
+        transform: translateY(0) rotate(5deg);
+        opacity: 0.5;
+      }
+    }
+
+    /* Destello dorado — bodas */
+    @keyframes shimmer {
+      0% {
+        background-position: -200% center;
+      }
+
+      100% {
+        background-position: 200% center;
+      }
+    }
+
+    @keyframes heartbeat {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      30% {
+        transform: scale(1.18);
+      }
+
+      60% {
+        transform: scale(0.95);
+      }
+    }
+
+    @keyframes ringsRotate {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Brillo partícula — todos */
+    @keyframes sparkle {
+
+      0%,
+      100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(0deg);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(180deg);
+      }
+    }
+
+    /* Línea dorada animada en section-tag */
+    @keyframes lineExpand {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 40px;
+      }
+    }
+
+    /* Fade lateral para cards */
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* ── DECORADORES POR SECCIÓN ── */
+
+    /* Partícula flotante genérica */
+    .section-deco {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* XV años — pétalos rosas sutiles */
+    .section-xv {
+      background: linear-gradient(160deg, rgba(255, 240, 245, 0.35) 0%, transparent 60%);
+    }
+
+    .section-xv .section-tag {
+      color: #c97b9a;
+      border-color: rgba(201, 123, 154, 0.35);
+    }
+
+    .section-xv .section-header h2 {
+      color: #2a1a20;
+    }
+
+    .section-xv .petal {
+      position: absolute;
+      font-size: 1rem;
+      animation: petalFloat 4s ease-in-out infinite;
+      opacity: 0.55;
+    }
+
+    .section-xv .petal:nth-child(2) {
+      animation: petalDrift 5s ease-in-out 1s infinite;
+      font-size: 0.8rem;
+    }
+
+    .section-xv .petal:nth-child(3) {
+      animation: petalFloat 6s ease-in-out 2s infinite;
+      font-size: 1.2rem;
+    }
+
+    .section-xv .card:hover {
+      box-shadow: 0 20px 50px rgba(201, 123, 154, 0.2);
+      border-color: rgba(201, 123, 154, 0.5);
+    }
+
+    .section-xv .btn-gold {
+      border-color: #c97b9a;
+      color: #c97b9a;
+    }
+
+    .section-xv .btn-gold:hover {
+      background: #c97b9a;
+      color: #fff;
+      border-color: #c97b9a;
+    }
+
+    /* Bodas — shimmer dorado */
+    .section-boda {
+      background: linear-gradient(160deg, rgba(240, 232, 210, 0.25) 0%, transparent 60%);
+    }
+
+    .section-boda .section-tag {
+      color: var(--gold-dark);
+      border-color: rgba(160, 120, 64, 0.4);
+      background: rgba(201, 169, 110, 0.07);
+    }
+
+    .section-boda .section-header h2 {
+      background: linear-gradient(90deg, #8B6914, var(--gold), #C9A96E, var(--gold-dark));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+
+    .section-boda .card {
+      border-color: rgba(201, 169, 110, 0.3);
+    }
+
+    .section-boda .card:hover {
+      box-shadow: 0 20px 60px rgba(201, 169, 110, 0.25);
+      border-color: rgba(201, 169, 110, 0.7);
+    }
+
+    .section-boda .heart-deco {
+      position: absolute;
+      right: 6%;
+      top: 2.5rem;
+      font-size: 1.3rem;
+      animation: heartbeat 2.5s ease-in-out infinite;
+      opacity: 0.35;
+    }
+
+    /* Partículas sparkle en sección boda */
+    .sparkle-dot {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      animation: sparkle 3s ease-in-out infinite;
+    }
+
+    /* ── section-header: línea decorativa bajo el tag ── */
+    .section-header .deco-line {
+      display: block;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, currentColor, transparent);
+      margin: 0.6rem auto 0.8rem;
+      opacity: 0.4;
+      width: 0;
+      transition: width 1s ease 0.3s;
+    }
+
+    .section-header.visible .deco-line {
+      width: 80px;
+    }
+
+    .section-xv .section-header .deco-line {
+      color: #c97b9a;
+    }
+
+    .section-boda .section-header .deco-line {
+      color: var(--gold);
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav {
@@ -436,9 +686,13 @@
   <div class="gold-divider"><span>✦</span></div>
 
   <!-- ───── SECCIÓN: XV CAMILA ───── -->
-  <section class="section" id="xv">
+  <section class="section section-xv" id="xv" style="position:relative;overflow:hidden;">
+    <span class="petal section-deco" style="top:2rem;left:4%;">🌸</span>
+    <span class="petal section-deco" style="top:3.5rem;right:7%;font-size:0.75rem;">✿</span>
+    <span class="petal section-deco" style="bottom:4rem;left:9%;font-size:0.9rem;">🌷</span>
     <div class="section-header">
       <span class="section-tag">XV Años</span>
+      <span class="deco-line"></span>
       <h2>Camila — Sweet Fifteen</h2>
     </div>
     <div class="cards-grid">
@@ -500,9 +754,15 @@
   <div class="gold-divider"><span>✦</span></div>
 
   <!-- ───── SECCIÓN: BODA CESAR & LEYDI ───── -->
-  <section class="section" id="bodas">
+  <section class="section section-boda" id="bodas" style="position:relative;overflow:hidden;">
+    <span class="heart-deco">♡</span>
+    <span class="sparkle-dot" style="top:2rem;left:5%;animation-delay:0s;"></span>
+    <span class="sparkle-dot" style="top:4rem;left:12%;animation-delay:0.8s;width:4px;height:4px;"></span>
+    <span class="sparkle-dot" style="bottom:5rem;right:8%;animation-delay:1.5s;"></span>
+    <span class="sparkle-dot" style="top:3rem;right:15%;animation-delay:2.2s;width:3px;height:3px;"></span>
     <div class="section-header">
       <span class="section-tag">Bodas</span>
+      <span class="deco-line"></span>
       <h2>César &amp; Leydi</h2>
     </div>
     <div class="cards-grid">
@@ -552,9 +812,12 @@
   <div class="gold-divider"><span>✦</span></div>
 
   <!-- ───── SECCIÓN: XV MAYA ───── -->
-  <section class="section">
+  <section class="section section-xv" style="position:relative;overflow:hidden;">
+    <span class="petal section-deco" style="top:2.5rem;right:5%;">🌸</span>
+    <span class="petal section-deco" style="bottom:3rem;left:6%;font-size:0.8rem;">✿</span>
     <div class="section-header">
       <span class="section-tag">XV Años</span>
+      <span class="deco-line"></span>
       <h2>Maya — Quinceañera</h2>
     </div>
     <div class="cards-grid">
@@ -603,9 +866,14 @@
   <div class="gold-divider"><span>✦</span></div>
 
   <!-- ───── SECCIÓN: LAURA & SANTOS ───── -->
-  <section class="section" id="eventos">
+  <section class="section section-boda" id="eventos" style="position:relative;overflow:hidden;">
+    <span class="heart-deco" style="right:auto;left:5%;top:2rem;">♡</span>
+    <span class="sparkle-dot" style="top:3rem;right:6%;animation-delay:0.4s;"></span>
+    <span class="sparkle-dot" style="bottom:4rem;left:10%;animation-delay:1.2s;width:4px;height:4px;"></span>
+    <span class="sparkle-dot" style="top:5rem;right:20%;animation-delay:2s;width:3px;height:3px;"></span>
     <div class="section-header">
       <span class="section-tag">Bodas</span>
+      <span class="deco-line"></span>
       <h2>Laura &amp; Santos</h2>
     </div>
     <div class="cards-grid">
@@ -667,9 +935,13 @@
   <div class="gold-divider"><span>✦</span></div>
 
   <!-- ───── SECCIÓN: MIKE & KANISHA ───── -->
-  <section class="section">
+  <section class="section section-boda" style="position:relative;overflow:hidden;">
+    <span class="heart-deco">♡</span>
+    <span class="sparkle-dot" style="top:2.5rem;left:8%;animation-delay:0.6s;"></span>
+    <span class="sparkle-dot" style="bottom:3rem;right:9%;animation-delay:1.8s;width:4px;height:4px;"></span>
     <div class="section-header">
       <span class="section-tag">Bodas</span>
+      <span class="deco-line"></span>
       <h2>Mike &amp; Kanisha</h2>
     </div>
     <div class="cards-grid">
@@ -742,9 +1014,13 @@
   <div class="gold-divider"><span>✦</span></div>
 
   <!-- ───── SECCIÓN: XV KIM ───── -->
-  <section class="section">
+  <section class="section section-xv" style="position:relative;overflow:hidden;">
+    <span class="petal section-deco" style="top:2rem;left:7%;">🌷</span>
+    <span class="petal section-deco" style="top:3rem;right:5%;font-size:0.85rem;">🌸</span>
+    <span class="petal section-deco" style="bottom:3.5rem;right:10%;font-size:0.75rem;">✿</span>
     <div class="section-header">
       <span class="section-tag">XV Años</span>
+      <span class="deco-line"></span>
       <h2>Kim — Quinceañera</h2>
     </div>
     <div class="cards-grid">
@@ -826,34 +1102,64 @@
 
   <script>
     // Intersection Observer para animar al hacer scroll
-const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, observerOptions);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
 
-// Observar headers de sección
-document.querySelectorAll('.section-header').forEach(el => observer.observe(el));
+    // Observar headers de sección
+    document.querySelectorAll('.section-header').forEach(el => observer.observe(el));
 
-// Observar cards con delay escalonado
-document.querySelectorAll('.cards-grid').forEach(grid => {
-  const cards = grid.querySelectorAll('.card');
-  const gridObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        cards.forEach((card, i) => {
-          setTimeout(() => card.classList.add('visible'), i * 100);
+    // Observar cards con delay escalonado + dirección alterna por sección
+    document.querySelectorAll('.cards-grid').forEach((grid, gridIndex) => {
+      const cards = grid.querySelectorAll('.card');
+      const isXV   = grid.closest('.section-xv');
+      const isBoda = grid.closest('.section-boda');
+
+      // Asignar animación inicial por tipo
+      cards.forEach((card, i) => {
+        if (isXV) {
+          // XV: entrada desde abajo con leve rotación
+          card.style.transform = 'translateY(45px) rotate(-1deg)';
+          card.style.transition = `opacity 0.65s, transform 0.65s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s, border-color 0.4s`;
+        } else if (isBoda) {
+          // Bodas: alternando izq / der
+          const dir = i % 2 === 0 ? '-35px' : '35px';
+          card.style.transform = `translateX(${dir})`;
+          card.style.transition = `opacity 0.7s, transform 0.7s ease, box-shadow 0.4s, border-color 0.4s`;
+        }
+      });
+
+      const gridObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            cards.forEach((card, i) => {
+              setTimeout(() => {
+                card.style.transform = '';
+                card.classList.add('visible');
+              }, i * 110);
+            });
+            gridObserver.unobserve(entry.target);
+          }
         });
-        gridObserver.unobserve(entry.target);
-      }
+      }, observerOptions);
+      gridObserver.observe(grid);
     });
-  }, observerOptions);
-  gridObserver.observe(grid);
-});
+
+    // Animación sutil de pétalos: posición levemente aleatoria al cargar
+    document.querySelectorAll('.petal').forEach((p, i) => {
+      p.style.animationDelay = (i * 0.7) + 's';
+    });
+
+    // Sparkles con delays variados (ya definidos inline, solo asegurar visibilidad)
+    document.querySelectorAll('.sparkle-dot').forEach((s, i) => {
+      s.style.animationDelay = (i * 0.6) + 's';
+    });
   </script>
 </body>
 
